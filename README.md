@@ -2,4 +2,5 @@
 
 
 ## 内置
-vuex + vur-router + momentJs + qs + loadash + axios
+
+vuex + vue-router + momentJs + qs + loadash + axios
