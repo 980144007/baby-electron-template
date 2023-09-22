@@ -1,0 +1,71 @@
+{
+  "name": "my-electron",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "dependencies": {
+    "axios": "^1.5.0",
+    "element-plus": "latest",
+    "less": "^4.2.0",  
+    "moment": "^2.29.4",
+    "qs": "^6.11.2",
+    "lightningcss": "^1.22.0",
+    "stylus": "^0.60.0",
+    "sugarss": "^4.0.1",
+    "terser": "^5.20.0",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4",
+    "vuex": "^4.1.0"
+  },
+  "devDependencies": {
+    "unplugin-auto-import": "^0.16.6",
+    "@nuxt/kit": "^3.7.3",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "@vueuse/core": "^10.4.1",
+    "concurrently": "^8.2.1",
+    "electron": "^26.2.2",
+    "electron-builder": "^24.6.4",
+    "encoding": "^0.1.13",
+    "unplugin-vue-components": "^0.25.2",
+    "vite": "^4.4.5",
+    "vite-plugin-mkcert": "^1.16.0",
+    "wait-on": "^7.0.1"
+  },
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite --host",
+    "serve": "vite preview",
+    "build": "vite build",
+    "electron": "wait-on tcp:80 && electron . --mode=development ",
+    "electron:serve": "concurrently -k \"npm run dev\" \"npm run electron\"",
+    "electron:build": "npm run build && electron-builder",
+    "electron:build.mac": "npm run build && electron-builder --macos"
+  },
+  "build": {
+    "appId": "8a06282fb08c48eeacb15bfbe4d3a35b",
+    "productName": "my-electron",
+    "copyright": "Copyright © 2022 my-electron",
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "assets/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets",
+      "output": "dist_electron"
+    }
+  }
+}
