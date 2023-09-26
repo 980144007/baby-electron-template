@@ -6,9 +6,10 @@
 export default {
     name: "page-home",
     methods: {
-        onClick() {
-            // alert("666!")
-            
+        async onClick() {
+            // const filePath = await window.electronAPI.openFile();
+            // console.log(filePath)
+            window.pageHome.toNotification();
         }
     },
     created() {
